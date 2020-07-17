@@ -6,13 +6,18 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainSectionComponent } from './main-section/main-section.component';
+import { AddRefuelingComponent } from './main-section/add-refueling/add-refueling.component';
+import { RefuelingHistoryComponent } from './main-section/refueling-history/refueling-history.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     SidebarComponent,
-    MainSectionComponent
+    MainSectionComponent,
+    AddRefuelingComponent,
+    RefuelingHistoryComponent
   ],
   imports: [
     BrowserModule,
