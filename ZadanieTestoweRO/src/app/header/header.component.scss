@@ -1,0 +1,16 @@
+.header{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: end;
+    height:100%;
+    background-color:rgba(255, 255, 255, 0.795);
+}
+.header__user--toggle{
+    width:10%;
+    height:100%;
+}
+.header__notification--toggle{
+    width:10%;
+    height:100%;
+}
