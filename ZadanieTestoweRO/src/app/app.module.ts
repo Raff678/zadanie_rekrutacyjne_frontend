@@ -9,7 +9,8 @@ import { MainSectionComponent } from './main-section/main-section.component';
 import { AddRefuelingComponent } from './main-section/add-refueling/add-refueling.component';
 import { RefuelingHistoryComponent } from './main-section/refueling-history/refueling-history.component';
 import { RouterModule } from '@angular/router';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,9 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

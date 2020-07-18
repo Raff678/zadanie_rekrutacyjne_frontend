@@ -1,1 +1,35 @@
-<p>add-refueling works!</p>
+<div class="add-refueling">
+    <p class="add-refueling__title">Add New Refueling</p>
+    <hr>
+    <form [formGroup] = "addEntryForm" (ngSubmit)="onSubmit()"class="add-refueling__form" >
+        <div class="form__meter-status">
+            <label class="form__meter-status--label">Meter status</label>
+            <input class="form__meter-status--input" 
+            formControlName="meterStatus" 
+            type="text">
+        </div>
+        <div class="form__refuel-date">
+            <label class="form__refuel-date--label">Date</label>
+            <input class="form__refuel-date--input"
+            formControlName="date"  type="text">
+        </div>
+        <div class="form__fuel-type">
+            <label class="form__fuel-type--label"> Fuel type</label>
+            <input class="form__fuel-type--input"
+            formControlName="fuelType"  type="text">
+        </div>
+        <div class="form__fuel-amount">
+            <label class="form__fuel-amount--label"> Fuel Amount</label>
+            <input class="form__fuel-amount--input"
+            formControlName="fuelAmount"  type="text">
+        </div>
+        <div class="form__fuel-unit-price">
+            <label class="form__fuel-unit-price--label">Unit price</label>
+            <input class="form__fuel-unit-price--input"
+            formControlName="unitPrice"  type="text">
+        </div>
+        <button type="submit" >
+            Save
+        </button>
+    </form>
+</div>
