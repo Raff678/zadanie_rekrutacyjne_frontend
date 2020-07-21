@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {RefuelsService} from '../../shared/refuels.service'
 import { Refuel } from 'src/app/shared/refuel';
 @Component({
@@ -18,11 +18,12 @@ export class AddRefuelingComponent implements OnInit {
 
   private initForm(): void {
     this.addEntryForm = new FormGroup({
-      date: new FormControl(''),
-      fuelAmount: new FormControl(''),
-      fuelType: new FormControl(''),
-      meterStatus: new FormControl(''),
-      unitPrice: new FormControl('')
+      date: new FormControl('',[Validators.required]),
+      fuelAmount: new FormControl('',[Validators.required]),
+      fuelType: new FormControl('',[Validators.required]),
+      meterStatus: new FormControl('',[Validators.required]),
+      unitPrice: new FormControl('',[Validators.required]),
+      driverName: new FormControl('')
     });
   }
 
@@ -33,7 +34,8 @@ export class AddRefuelingComponent implements OnInit {
       date:this.addEntryForm.value.date,
       fuelType:this.addEntryForm.value.fuelType,
       fuelAmount:this.addEntryForm.value.fuelAmount,
-      unitPrice:this.addEntryForm.value.unitPrice
+      unitPrice:this.addEntryForm.value.unitPrice,
+      driverName:this.addEntryForm.value.driverName
     };
     this.refuelsService.addRefuel(refuel);
   }
