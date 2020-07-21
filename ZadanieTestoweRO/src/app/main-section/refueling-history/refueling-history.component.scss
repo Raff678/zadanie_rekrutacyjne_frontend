@@ -1,0 +1,31 @@
+
+  .refuels-history{
+    width:80%;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+  }
+  .history__title{
+    margin-top:2rem;
+    align-self: flex-start;
+  }
+  .history__datatable{
+    margin-top:5rem;
+    display:flex;
+    flex-direction: column;
+  }
+  .history__search-field {
+    width: 10rem;
+    align-self: flex-start;
+  }
+
+  .info-dialog__content{
+    display:grid;
+    grid-template-areas: "label data";
+    .info-dialog__content--label{
+      grid:label;
+    }
+    .info-dialog__content--data{
+      grid:data;
+    }
+  }

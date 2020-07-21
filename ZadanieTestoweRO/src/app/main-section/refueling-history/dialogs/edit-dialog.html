@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Edit Refuel</h2>
+<mat-dialog-content>
+    <form [formGroup] = "editForm" class="add-refueling__form" >
+      <mat-form-field appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>  
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Meter Status</mat-label>
+        <input matInput formControlName="meterStatus" >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+          <mat-label>Fuel Type</mat-label>
+          <mat-select formControlName="fuelType">
+            <mat-option value="Diesel">Diesel</mat-option>
+            <mat-option value="Gas">Gas</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Fuel Amount</mat-label>
+        <input matInput formControlName="fuelAmount" >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Unit Price</mat-label>
+        <input matInput formControlName="unitPrice" >
+      </mat-form-field>
+      <br>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions style="margin:auto">
+    <button mat-button  [mat-dialog-close]="editForm" cdkFocusInitial style="margin:auto">Update</button>
+    <button mat-button  mat-dialog-close style="margin:auto">Cancel</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,18 @@
+.add-refueling{
+    width:80%;
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    
+    .add-refueling__title{
+        margin-top:2rem;
+        align-self: flex-start;
+    }
+    .add-refueling__form{
+        margin:3rem auto;
+        width:60%;
+        display:flex;
+        flex-direction: column;
+        flex-wrap:nowrap;
+    }
+}
