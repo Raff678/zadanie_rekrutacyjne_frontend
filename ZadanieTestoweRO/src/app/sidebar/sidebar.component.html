@@ -1,18 +1,22 @@
 <div class="sidebar">
     <div class="sidebar__logo"> 
+        <mat-icon class="sidebar__logo--icon">local_gas_station</mat-icon>
         <p>GAS STATION SIMULATOR</p>
     </div>
     <div class="sidebar__sections">
-        <div class="sidebar__section--button"><p>Gasoline</p>
-            <button routerLink="general/addentry" 
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Gasoline Station              
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <button mat-button routerLink="general/addentry" 
             routerLinkActive="active"
             class="sidebar__section--feature-button">Add Entry</button>
-            <button routerLink="general/refuelinghistory" 
+            <button mat-button routerLink="general/refuelinghistory" 
             routerLinkActive="active"
             class="sidebar__section--feature-button">Open Transactions</button>
-        </div>
-        <div class="sidebar__section--button">test 1</div>
-        <div class="sidebar__section--button"> test2</div>
+          </mat-expansion-panel>
     </div>
     <div class="sidebar__footer"> footer</div>
 </div>

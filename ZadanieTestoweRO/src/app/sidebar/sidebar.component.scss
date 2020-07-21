@@ -5,12 +5,16 @@
     justify-content: space-between;
     align-items: center;
     height:100%;
-    background-color:rgba(255, 255, 255, 0.925);
+    background-color:rgba(255, 255, 255, 0.85);
 }
 
 .sidebar__logo{
     align-self: center;
     height:30%;
+}
+.sidebar__logo--icon{
+    
+  font-size: 10rem;
 }
 .sidebar__sections{
     width:100%;
@@ -23,7 +27,6 @@
 }
 .sidebar__section--button{
     width:100%;
-    background:red;
 }
 .sidebar__section--feature-button{
     width:100%;

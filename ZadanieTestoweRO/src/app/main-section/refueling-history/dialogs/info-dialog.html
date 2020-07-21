@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Refuel Informations</h2>
+<mat-dialog-content class="info-dialog__content">
+    <p class="info-dialog__content--label">Date : </p><p class="info-dialog__content--data">{{refuel.date |date}}</p>
+    <p class="info-dialog__content--label">Meter Status : </p><p class="info-dialog__content--data">{{refuel.meterStatus}}</p>
+    <p class="info-dialog__content--label">Fuel Type : </p><p class="info-dialog__content--data">{{refuel.fuelType}}</p>
+    <p class="info-dialog__content--label">Fuel Amount : </p><p class="info-dialog__content--data">{{refuel.fuelAmount}}</p>
+    <p class="info-dialog__content--label">Unit Price :</p><p class="info-dialog__content--data">{{refuel.unitPrice}}</p>
+</mat-dialog-content>
+<mat-dialog-actions >
+    <button style="margin:auto" mat-button  mat-dialog-close>close</button>
+</mat-dialog-actions>
+

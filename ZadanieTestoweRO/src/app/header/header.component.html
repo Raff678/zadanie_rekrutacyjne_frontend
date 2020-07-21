@@ -1,4 +1,32 @@
 <div class="header">
-    <button class="header__notification--toggle">msg</button>
-    <button class="header__user--toggle">user</button>
+    <button mat-icon-button [matMenuTriggerFor]="notificationMenu" class="header__notification--toggle" aria-label="Example icon-button with a menu">
+        <mat-icon>notifications</mat-icon>
+      </button>
+    <button mat-icon-button [matMenuTriggerFor]="userMenu" class="header__user--toggle" aria-label="Example icon-button with a menu">
+    <mat-icon>account_circle</mat-icon>
+    </button>
 </div>
+<mat-menu #userMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>voicemail</mat-icon>
+      <span>View Profile</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Edit Profile</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>      
+   <mat-menu #notificationMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>View Messages</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>  

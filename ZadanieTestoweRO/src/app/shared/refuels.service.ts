@@ -1,43 +1,92 @@
 import { Injectable } from '@angular/core';
-import { RefuelEntry } from '../main-section/refuel-entry.model';
 import { Subject } from 'rxjs';
-
+import {Refuel} from '../shared/refuel';
+import { HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class RefuelsService {
 
-  refuels: RefuelEntry[] = [];
-  refuelsChanged = new Subject<RefuelEntry[]>();
-  startedEditing = new Subject<number>();
-  constructor() { }
+  refuels: Refuel[] = [];
+  refuelsChanged = new Subject<Refuel[]>();
+  error = new Subject<string>();
 
+  constructor(private http: HttpClient, private routes: Router) { }
 
-  getRefuels(): RefuelEntry[] {
-    return this.refuels.slice();
-  }
-
-  getRefuel(index: number): RefuelEntry {
+  getRefuel(index: number): Refuel {
     return this.refuels[index];
   }
 
-  addRefuel(refuel: RefuelEntry): void {
-    this.refuels.push(refuel);
-    this.refuelsChanged.next(this.refuels.slice());
+  addRefuel(refuel: Refuel): void {
+    const postData: Refuel = refuel;
+    this.http
+      .post(
+        'http://localhost:8080/zadanie/refuels',
+        postData,
+        {
+          observe: 'response'
+        }
+      )
+      .subscribe(
+        responseData => {
+          this.routes.navigate(['general/refuelinghistory']);
+        },
+        error => {
+          this.error.next(error.message);
+        }
+      );
   }
 
-  addRefuels(refuels: RefuelEntry[]): void {
-    this.refuels.push(...refuels);
-    this.refuelsChanged.next(this.refuels.slice());
-  }
-
-  updateRefuel(index: number, newRefuel: RefuelEntry): void {
-    this.refuels[index] = newRefuel;
-    this.refuelsChanged.next(this.refuels.slice());
+  updateRefuel(index: number, newRefuel: Refuel): void {
+    const postData: Refuel = newRefuel;
+    this.http
+    .put(
+      'http://localhost:8080/zadanie/refuels/'+index,
+      postData,
+      {
+        observe: 'response'
+      }
+    )
+    .subscribe(
+      responseData => {
+        this.fetchRefuels();
+      },
+      error => {
+        this.error.next(error.message);
+      }
+    );
   }
 
   deleteRefuel(index: number): void {
-    this.refuels.splice(index, 1);
-    this.refuelsChanged.next(this.refuels.slice());
+    this.http
+    .delete(
+      'http://localhost:8080/zadanie/refuels/'+index
+    )
+    .subscribe(
+      responseData => {
+        this.fetchRefuels();
+      },
+      error => {
+        this.error.next(error.message);
+      }
+    );
+  }
+
+  fetchRefuels(): void {
+    this.http
+      .get(
+        'http://localhost:8080/zadanie/refuels',
+        {
+          responseType: 'json'
+        }
+      ).subscribe(
+            responseData => {
+              this.refuels = (<Refuel[]>responseData).slice();
+              this.refuelsChanged.next(this.refuels.slice());
+            },
+            error => {
+              this.error.next(error.message);
+            });
   }
 }
