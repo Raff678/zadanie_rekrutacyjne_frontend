@@ -15,26 +15,28 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
             <td mat-cell *matCellDef="let row"> {{ row.date | date }} </td>
             </ng-container>
-
-            <ng-container matColumnDef="fuelType">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fuel Type </th>
-            <td mat-cell *matCellDef="let row;">  {{row.fuelType}}  </td>
-            </ng-container>
-
-            <ng-container matColumnDef="fuelAmount">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fuel Amount </th>
-                <td mat-cell *matCellDef="let row"> {{row.fuelAmount}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="unitPrice">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit Price </th>
-                <td mat-cell *matCellDef="let row"> {{row.unitPrice}} </td>
-            </ng-container>
-          
             <ng-container matColumnDef="meterStatus">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> MeterStatus </th>
                 <td mat-cell *matCellDef="let row"> {{row.meterStatus}} </td>
             </ng-container>
+            <ng-container matColumnDef="fuelType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fuel Type </th>
+            <td mat-cell *matCellDef="let row;">  {{row.fuelType}}  </td>
+            </ng-container>
+            <ng-container matColumnDef="fuelAmount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fuel Amount </th>
+                <td mat-cell *matCellDef="let row"> {{row.fuelAmount}} </td>
+            </ng-container>
+            <ng-container matColumnDef="unitPrice">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Unit Price </th>
+                <td mat-cell *matCellDef="let row"> {{row.unitPrice}} </td>
+            </ng-container>
+            <ng-container matColumnDef="driverName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Driver Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.driverName}} </td>
+            </ng-container>
+          
+           
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row"> 
@@ -49,8 +51,8 @@
                     </button>
                 </td>
             </ng-container>
-            <tr mat-header-row *matHeaderRowDef="['date', 'fuelType', 'fuelAmount', 'unitPrice','meterStatus', 'action']"></tr>
-            <tr mat-row *matRowDef="let row; columns: ['date', 'fuelType', 'fuelAmount', 'unitPrice','meterStatus','action']"></tr>
+            <tr mat-header-row *matHeaderRowDef="['date', 'meterStatus','fuelType', 'fuelAmount', 'unitPrice', 'driverName','action']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['date', 'meterStatus','fuelType', 'fuelAmount', 'unitPrice', 'driverName','action']"></tr>
             
         </table>
         <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>

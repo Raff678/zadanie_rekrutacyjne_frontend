@@ -6,7 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Refuel } from 'src/app/shared/refuel';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-refueling-history',
@@ -106,11 +106,12 @@ export class EditDialogComponent {
   private initForm(): void {
     this.editForm = new FormGroup({
       id: new FormControl(this.data.id),
-      date: new FormControl(this.data.date),
-      fuelAmount: new FormControl(this.data.fuelAmount),
-      fuelType: new FormControl(this.data.fuelType),
-      meterStatus: new FormControl(this.data.meterStatus),
-      unitPrice: new FormControl(this.data.unitPrice)
+      date: new FormControl(this.data.date,[Validators.required]),
+      fuelAmount: new FormControl(this.data.fuelAmount,[Validators.required]),
+      fuelType: new FormControl(this.data.fuelType,[Validators.required]),
+      meterStatus: new FormControl(this.data.meterStatus,[Validators.required]),
+      unitPrice: new FormControl(this.data.unitPrice,[Validators.required]),
+      driverName: new FormControl(this.data.driverName)
     });
   }
 }

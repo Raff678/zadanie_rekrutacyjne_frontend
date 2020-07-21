@@ -10,7 +10,7 @@
         </mat-form-field>  
         <mat-form-field appearance="outline">
           <mat-label>Meter Status</mat-label>
-          <input matInput formControlName="meterStatus" >
+          <input type="number" matInput formControlName="meterStatus" >
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Fuel Type</mat-label>
@@ -19,17 +19,18 @@
               <mat-option value="Gas">Gas</mat-option>
             </mat-select>
           </mat-form-field>
-          <br>
           <mat-form-field appearance="outline">
             <mat-label>Fuel Amount</mat-label>
-            <input matInput formControlName="fuelAmount" >
+            <input type="number" matInput formControlName="fuelAmount" >
           </mat-form-field>
-          <br>
           <mat-form-field appearance="outline">
             <mat-label>Unit Price</mat-label>
-            <input matInput formControlName="unitPrice" >
+            <input type="number"matInput formControlName="unitPrice" >
           </mat-form-field>
-          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>Driver Name (optional)</mat-label>
+            <input type="text" matInput formControlName="driverName" >
+          </mat-form-field>
         <button mat-button type="submit" >
             Save
         </button>
