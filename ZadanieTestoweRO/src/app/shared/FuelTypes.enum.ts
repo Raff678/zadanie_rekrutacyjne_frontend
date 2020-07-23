@@ -1,4 +1,4 @@
 export enum FuelTypes{
-    Diesel,
-    Gas
+    DIESEL,
+    GAS
 }

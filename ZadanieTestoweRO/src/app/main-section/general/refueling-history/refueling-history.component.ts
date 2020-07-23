@@ -17,6 +17,8 @@ export class RefuelingHistoryComponent implements OnInit,OnDestroy,AfterViewInit
   subscription: Subscription ;
   dataSource = new MatTableDataSource<Refuel>();
 
+  fuelUsed:number;
+
   constructor(private refuelsService: RefuelsService, private dialog: MatDialog) { }
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -25,7 +27,9 @@ export class RefuelingHistoryComponent implements OnInit,OnDestroy,AfterViewInit
     this.refuelsService.fetchRefuels();
     this.subscription = this.refuelsService.refuelsChanged
       .subscribe((refuels: Refuel[]) => {
-          this.dataSource.data = refuels;
+
+        let updatedRefuels:Refuel[] = this.putAdditionalTankingInformations(refuels);
+          this.dataSource.data = updatedRefuels;
         }
       );
   }
@@ -61,8 +65,34 @@ export class RefuelingHistoryComponent implements OnInit,OnDestroy,AfterViewInit
       }
     });
   }
-}
 
+  getFuelUsed(lastMeter:number, actualMeter:number){
+
+  }
+
+  putAdditionalTankingInformations(refuels: Refuel[]): Refuel[]{
+    let previousRefuel: Refuel;
+    const updatedRefuels: Refuel[]=[];
+    for(let i=0;(i<refuels.length); i++){
+      const currentRefuel = refuels[i];
+      if(previousRefuel){
+        const differenceInKm: number = refuels[i].meterStatus - previousRefuel.meterStatus;
+        currentRefuel.lper100km = currentRefuel.fuelAmount / (differenceInKm / 100);
+        currentRefuel.costPerKm = ((currentRefuel.fuelAmount * currentRefuel.unitPrice) / differenceInKm) * 100;
+
+        currentRefuel.lper100km = Math.round(currentRefuel.lper100km * 100) / 100;
+        currentRefuel.costPerKm = Math.round(currentRefuel.costPerKm * 100) / 100;
+      }
+      else{
+        currentRefuel.lper100km = 0;
+        currentRefuel.costPerKm = 0;
+      }
+      updatedRefuels.push(currentRefuel);
+      previousRefuel = currentRefuel;
+    }
+    return updatedRefuels;
+  }
+}
 
 
 

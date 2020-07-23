@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {RefuelsService} from '../../shared/refuels.service'
-import { Refuel } from 'src/app/shared/refuel';
+import {RefuelsService} from '../../../shared/refuels.service'
+import { Refuel } from '../../../shared/refuel';
 @Component({
   selector: 'app-add-refueling',
   templateUrl: './add-refueling.component.html',
@@ -28,15 +28,7 @@ export class AddRefuelingComponent implements OnInit {
   }
 
   onSubmit(): void{
-    const refuel: Refuel = {
-      id: null,
-      meterStatus:this.addEntryForm.value.meterStatus,
-      date:this.addEntryForm.value.date,
-      fuelType:this.addEntryForm.value.fuelType,
-      fuelAmount:this.addEntryForm.value.fuelAmount,
-      unitPrice:this.addEntryForm.value.unitPrice,
-      driverName:this.addEntryForm.value.driverName
-    };
+    const refuel: Refuel = this.addEntryForm.value;
     this.refuelsService.addRefuel(refuel);
   }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddRefuelingComponent } from './main-section/add-refueling/add-refueling.component';
-import {RefuelingHistoryComponent} from './main-section/refueling-history/refueling-history.component';
+import { AddRefuelingComponent } from './main-section/general/add-refueling/add-refueling.component';
+import {RefuelingHistoryComponent} from './main-section/general/refueling-history/refueling-history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },

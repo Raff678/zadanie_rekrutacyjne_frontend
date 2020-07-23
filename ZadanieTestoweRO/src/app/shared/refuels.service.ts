@@ -22,7 +22,7 @@ export class RefuelsService {
     const postData: Refuel = refuel;
     this.http
       .post(
-        'http://localhost:8080/zadanie/refuels',
+        'http://localhost:8080/zadanie/api/refuels',
         postData,
         {
           observe: 'response'
@@ -42,7 +42,7 @@ export class RefuelsService {
     const postData: Refuel = newRefuel;
     this.http
     .put(
-      'http://localhost:8080/zadanie/refuels/'+index,
+      'http://localhost:8080/zadanie/api/refuels/'+index,
       postData,
       {
         observe: 'response'
@@ -61,7 +61,7 @@ export class RefuelsService {
   deleteRefuel(index: number): void {
     this.http
     .delete(
-      'http://localhost:8080/zadanie/refuels/'+index
+      'http://localhost:8080/zadanie/api/refuels/'+index
     )
     .subscribe(
       responseData => {
@@ -76,14 +76,20 @@ export class RefuelsService {
   fetchRefuels(): void {
     this.http
       .get(
-        'http://localhost:8080/zadanie/refuels',
+        'http://localhost:8080/zadanie/api/refuels',
         {
           responseType: 'json'
         }
       ).subscribe(
             responseData => {
-              this.refuels = (<Refuel[]>responseData).slice();
-              this.refuelsChanged.next(this.refuels.slice());
+              if(responseData){
+                this.refuels = (<Refuel[]>responseData).slice();
+                this.refuelsChanged.next(this.refuels.slice());
+              }
+              else{
+                this.refuels = [];
+                this.refuelsChanged.next(this.refuels.slice());
+              }
             },
             error => {
               this.error.next(error.message);
